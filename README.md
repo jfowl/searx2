@@ -11,6 +11,11 @@ I did a leittle bit of work on https://github.com/asciimoo/searx, a great projec
 
 I still see room for improvements, so this is just my fantasy, of how a project like this could be structured and run:
 
+## Which problems should be solved?
+- Provide a single endpoint to access search resulsts (from multiple places)
+- Privacy first: No trackers, everything proxied through server, no ads
+- Clean & extendable code.
+
 
 ## The Project's Organisation
 This covers the development, governance and community interaction
