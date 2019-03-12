@@ -97,11 +97,12 @@ All contributors are encouraged to enable 2fa on their accounts.
 - Crash fast and loud - When starting with invalid settings or insufficient ressources, it should crash and report those issues to the admin right away to avoid running into those problems later on.
 
 
-**Possible languages:**
-- Go - simple binaries and light threading.
+**language considerations:**
+- Go - simple binaries and light threading. Made with web apps in mind.
 - Elixir - known for stability in long running, parallel environments.
 - Rust - Might be a bit over the top, but lord, Rust IS sexy.
-- No python, no js, no ruby. No c, no c++.
+- Python - used by searx, would simplify writing adapters/backends for other search engines
+- NodeJS - made for the web, but no type safety (unless typescript) and also bloaty.
 
 
 #### Flow of data:
@@ -119,6 +120,15 @@ All contributors are encouraged to enable 2fa on their accounts.
 
 
 #### Structure:
+
+The search engine should probably consists of
+- a library that provides the search functionality
+- a web-server programm that accesses the library and provides a frontend and the various APIs
+- a web-frontend.
+
+Having those components seperate forces a clean separation of unrelated aspects and incremental development. 
+I am still unsure, how I want the adapterrs/backends for other searches. Either as independant sub-modules, developed in micro-repos on their own, or as a part of the core library.
+
 
 - Modular:
   - Core functionality is started as one program.
