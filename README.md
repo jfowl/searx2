@@ -154,3 +154,6 @@ All contributors are encouraged to enable 2fa on their accounts.
 
 - Easy issues that don't enjoy high priority shall be labeled "good-first-issue" and get a link to the CONTRIBUTING docs and a mentor asigned, who can be asked in case of problems.
 
+## Checklist
+- [ ] Time requirements: Which process (step) may take how much time?
+- [ ] Scraping requirements: What is needed to get results from other sites?
