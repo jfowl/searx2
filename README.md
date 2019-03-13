@@ -16,35 +16,11 @@ I still see room for improvements, so this is just my fantasy, of how a project 
 - Privacy first: No trackers, everything proxied through server, no ads
 - Clean & extendable code.
 
-
-## The Project's Organisation
-This covers the development, governance and community interaction
-
-- Developed on Github for maximal exposure.
-- Slave-Git server on private infrastructure, in case anything goes wrong.
-- User and Instance-Admin docs on github wiki pages.
-- Short and simple license.
-- Funding: Maybe librepay or another open platform (bountys?)
-
-### Contributers and their roles
-
-- **Admins:** 2 persons with admin privileges. They prepare, bundle up and publish releases. 2fa required.
-- **Core Contributors:** Up to 5 persons. May accept PRs to the master branch. 2fa required.
-- **Trusted Contributors:** Can push to feature-* / fix-* branches.
-- **Moderator:** Maintainance of the issue section. Help users and keep track of issues, planning and labeling. Remind everyone of community guidelines.
-
-All contributors are encouraged to enable 2fa on their accounts.
-
-
-### Development Workflow
-
-1) Features and fixes are developed in seperate `feature-x` and `fix-x` branches. Those branches are always to be created from master.
-2) All pushes to branches are automatically built and tested by CI.
-3) Core contributors review the changes. If a PR is accepted, it is merged into `master`.
-4) Once in a while, the core contributors branch/merge `master` into `stable`. Important fixes may be merged there at any time. Each update to `stable` get's built and packaged up as a release. A changelog has to be created. Config-updating scripts shall be included into the release. Push a projectname-bin to AUR.
-
-- Easy issues that don't enjoy high priority shall be labeled "good-first-issue" and get a link to the CONTRIBUTING docs and a mentor asigned, who can be asked in case of problems.
-
+## which problems shouldn't it solve?
+- SSL and load balancing. Designed to sit behind a reverse proxy
+- Keeping state for clients. only cookies / get / post params are honored.
+- Log aggregation. Shall provide methods to access logs via a standard format (socket / file), but does not rotate or analyze them.
+  
 
 ## The Software
 
@@ -102,14 +78,6 @@ All contributors are encouraged to enable 2fa on their accounts.
 - Crash fast and loud - When starting with invalid settings or insufficient ressources, it should crash and report those issues to the admin right away to avoid running into those problems later on.
 
 
-**language considerations:**
-- Go - simple binaries and light threading. Made with web apps in mind.
-- Elixir - known for stability in long running, parallel environments.
-- Rust - Might be a bit over the top, but lord, Rust IS sexy.
-- Python - used by searx, would simplify writing adapters/backends for other search engines
-- NodeJS - made for the web, but no type safety (unless typescript) and also bloaty.
-
-
 #### Flow of data:
 
 - Input: Web- / JSON- / RSS-Query
@@ -147,9 +115,42 @@ I am still unsure, how I want the adapterrs/backends for other searches. Either 
 - Incoming requests are queued up for parsing, then the actions needed to fulfill the request and after a timeout the results and failures are delivered back to the client.
 
 
-#### Out of scope:
 
-- SSL and load balancing. Designed to sit behind a reverse proxy
-- Keeping state for clients. only cookies / get / post params are honored.
-- Log aggregation. Shall provide methods to access logs via a standard format (socket / file), but does not rotate or analyze them.
-  
+#### Language considerations:
+- Go - simple binaries and light threading. Made with web apps in mind.
+- Elixir - known for stability in long running, parallel environments.
+- Rust - Might be a bit over the top, but lord, Rust IS sexy.
+- Python - used by searx, would simplify writing adapters/backends for other search engines
+- NodeJS - made for the web, but no type safety (unless typescript) and also bloaty.
+
+
+
+
+## The Project's Organisation
+This covers the development, governance and community interaction
+
+- Developed on Github for maximal exposure.
+- Slave-Git server on private infrastructure, in case anything goes wrong.
+- User and Instance-Admin docs on github wiki pages.
+- Short and simple license.
+- Funding: Maybe librepay or another open platform (bountys?)
+
+### Contributers and their roles
+
+- **Admins:** 2 persons with admin privileges. They prepare, bundle up and publish releases. 2fa required.
+- **Core Contributors:** Up to 5 persons. May accept PRs to the master branch. 2fa required.
+- **Trusted Contributors:** Can push to feature-* / fix-* branches.
+- **Moderator:** Maintainance of the issue section. Help users and keep track of issues, planning and labeling. Remind everyone of community guidelines.
+
+All contributors are encouraged to enable 2fa on their accounts.
+
+
+### Development Workflow
+
+1) Features and fixes are developed in seperate `feature-x` and `fix-x` branches. Those branches are always to be created from master.
+2) All pushes to branches are automatically built and tested by CI.
+3) Core contributors review the changes. If a PR is accepted, it is merged into `master`.
+4) Once in a while, the core contributors branch/merge `master` into `stable`. Important fixes may be merged there at any time. Each update to `stable` get's built and packaged up as a release. A changelog has to be created. Config-updating scripts shall be included into the release. Push a projectname-bin to AUR.
+
+- Easy issues that don't enjoy high priority shall be labeled "good-first-issue" and get a link to the CONTRIBUTING docs and a mentor asigned, who can be asked in case of problems.
+
